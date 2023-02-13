@@ -115,7 +115,7 @@
       const myParam = urlParams.get('build');
 
       if (!build) {
-        build = getLatestBuildName();
+        build = await getLatestBuildName();
       }
 
       console.log("Getting build: ", build);
