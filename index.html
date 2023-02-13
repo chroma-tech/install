@@ -72,6 +72,7 @@
       }
     </style>
     <script type="module" src="https://unpkg.com/esp-web-tools@9.0.3/dist/web/install-button.js?module"></script>
+
   </head>
   <body>
     <div class="content">
@@ -79,10 +80,6 @@
 
       <p class="button-row" align="center">
         Angio: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/timber/espweb-manifest.json"></esp-web-install-button>
-      </p>
-
-      <p class="button-row" align="center">
-        Power core: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/powercore/manifest2.json"></esp-web-install-button>
       </p>
 
       <div class="footer">
@@ -98,6 +95,17 @@
           button.classList.remove('invisible');
         }
       ));
+
+
+      async function getManifest(build) {
+        let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
+        const response = await fetch(url);
+        const manifest = await response.json();
+        return manifest
+      }
+      
+      console.log(getManifest('main_8433f529a152c07074e2a9227d940a692a76d365'));
+
     </script>
   </body>
 </html>
