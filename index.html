@@ -104,7 +104,23 @@
         return manifest
       }
       
-      console.log(getManifest('main_8433f529a152c07074e2a9227d940a692a76d365'));
+      async function getLatestBuildName() {
+        let url = `https://storage.googleapis.com/chromatech-firmware/timber/latest`;
+        const response = await fetch(url);
+        const name = await response.text();
+        return name;
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const myParam = urlParams.get('build');
+
+      if (!build) {
+        build = getLatestBuildName();
+      }
+
+      console.log("Getting build: ", build);
+
+      //console.log(getManifest('main_8433f529a152c07074e2a9227d940a692a76d365'));
 
     </script>
   </body>
