@@ -111,14 +111,24 @@
         return name;
       }
 
-      const urlParams = new URLSearchParams(window.location.search);
-      const myParam = urlParams.get('build');
-
-      if (!build) {
-        build = await getLatestBuildName();
+      async function main() {
+        const urlParams = new URLSearchParams(window.location.search);
+        let build = urlParams.get('build');
+  
+        if (!build) {
+          build = await getLatestBuildName();
+        }
+        console.log("Getting build: ", build);
+        const manifest = await getManifest(build);
+        console.log(manifest);
       }
+      
+      (async () => {
 
-      console.log("Getting build: ", build);
+        await main();
+
+      });
+
 
       //console.log(getManifest('main_8433f529a152c07074e2a9227d940a692a76d365'));
 
