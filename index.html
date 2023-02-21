@@ -79,7 +79,7 @@
       <h1>Chroma.tech installer</h1>
 
       <p class="button-row" align="center">
-        Chroma.tech Canopy Firmware: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/timber/espweb-manifest.json"></esp-web-install-button>
+        Canopy Firmware <p id="firmware_version"></p>:<esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/timber/espweb-manifest.json"></esp-web-install-button>
       </p>
 
       <div class="footer">
@@ -122,6 +122,9 @@
         const manifest = await getManifest(build);
         console.log(manifest);
         
+        const version_span = document.querySelector('firmware_version');
+        version_span.innerHTML = manifest.version
+
         const button = document.querySelector('esp-web-install-button');
         let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
         button.manifest = url;
