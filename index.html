@@ -93,18 +93,17 @@
     </div>
     <script>
 
-      async function getManifest(build) {
-        let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
-        const response = await fetch(url);
-        const manifest = await response.json();
-        return manifest
-      }
-      
       async function getLatestBuildName() {
         let url = `https://storage.googleapis.com/chromatech-firmware/timber/latest`;
         const response = await fetch(url);
         const name = await response.text();
         return name;
+      }
+
+      async function getVersion(manifest_url) {
+        const response = await fetch(url);
+        const manifest = await response.json();
+        return manifest.version
       }
 
       async function main() {
@@ -115,19 +114,17 @@
           build = await getLatestBuildName();
         }
         console.log("Getting build: ", build);
-        const manifest = await getManifest(build);
-        console.log(manifest);
-        
+        let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
+        const timber_version = await getVersion(url);
         const version_span = document.querySelector('#timber_version');
-        version_span.innerHTML = manifest.version
+        version_span.innerHTML = timber_version
 
         const button = document.querySelector('#timber');
-        let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
         button.manifest = url;
 
-        const wled_manifest = await getManifest("https://storage.googleapis.com/chromatech-firmware/wled/manifest.json")
+        const wled_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/wled/manifest.json");
         const wled_version_span = document.querySelector('#wled_version');
-        wled_version_span.innerHTML = wled_manifest.version
+        wled_version_span.innerHTML = wled_version;
       }
       
       (async () => {
