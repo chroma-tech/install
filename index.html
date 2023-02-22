@@ -79,7 +79,11 @@
       <h1>Chroma.tech installer</h1>
 
       <p class="button-row" align="center">
-        Canopy Firmware <span id="firmware_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/timber/espweb-manifest.json"></esp-web-install-button>
+        Canopy Firmware <span id="timber_version"></span>: <esp-web-install-button id="timber" manifest="https://storage.googleapis.com/chromatech-firmware/timber/espweb-manifest.json"></esp-web-install-button>
+      </p>
+
+      <p class="button-row" align="center">
+        WLED <span id="wled_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/wled/manifest.json"></esp-web-install-button>
       </p>
 
       <div class="footer">
@@ -88,14 +92,6 @@
         Powered by <a href="https://esphome.github.io/esp-web-tools/">ESP Web Tools</a>.
     </div>
     <script>
-      document.querySelectorAll('input[name="type"]').forEach(radio =>
-        radio.addEventListener("change", () => {
-          const button = document.querySelector('esp-web-install-button');
-          button.manifest = `./manifest_${radio.value}.json`;
-          button.classList.remove('invisible');
-        }
-      ));
-
 
       async function getManifest(build) {
         let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
@@ -122,12 +118,16 @@
         const manifest = await getManifest(build);
         console.log(manifest);
         
-        const version_span = document.querySelector('#firmware_version');
+        const version_span = document.querySelector('#timber_version');
         version_span.innerHTML = manifest.version
 
-        const button = document.querySelector('esp-web-install-button');
+        const button = document.querySelector('#timber');
         let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
         button.manifest = url;
+
+        const wled_manifest = await getManifest("https://storage.googleapis.com/chromatech-firmware/wled/manifest.json")
+        const wled_version_span = document.querySelector('#wled_version');
+        wled_version_span.innerHTML = wled_manifest.version
       }
       
       (async () => {
