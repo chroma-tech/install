@@ -114,7 +114,7 @@
           build = await getLatestBuildName();
         }
         console.log("Getting build: ", build);
-        let url = `https://storage.googleapis.com/chromatech-firmware/timber/${build}/manifest.json`;
+        let url = `https://storage.googleapis.com/chromatech-firmware/timber/builds/${build}/manifest.json`;
         const timber_version = await getVersion(url);
         const version_span = document.querySelector('#timber_version');
         version_span.innerHTML = timber_version
