@@ -101,7 +101,7 @@
       }
 
       async function getVersion(manifest_url) {
-        const response = await fetch(manifest_url);
+        const response = await fetch(manifest_url, {cache: "no-store"});
         const manifest = await response.json();
         return manifest.version
       }
