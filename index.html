@@ -88,6 +88,10 @@
       </p>
 
       <p class="button-row" align="center">
+        WLED Moss<span id="wled_moss_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/wled-moss/manifest.json"></esp-web-install-button>
+      </p>
+
+      <p class="button-row" align="center">
         MicroPython <span id="micropython_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/micropython/manifest.json"></esp-web-install-button>
       </p>
 
@@ -130,6 +134,11 @@
         const wled_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/wled/manifest.json");
         const wled_version_span = document.querySelector('#wled_version');
         wled_version_span.innerHTML = wled_version;
+
+        const wled_moss_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/wled-moss/manifest.json");
+        const wled_moss_version_span = document.querySelector('#wled_moss_version');
+        wled_moss_version_span.innerHTML = wled_moss_version;
+
 
         const micropython_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/manifest.json");
         const micropython_version_span = document.querySelector('#micropython_version');
