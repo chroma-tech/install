@@ -145,7 +145,7 @@
 
         const wled_angio_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/wled-angio/manifest.json");
         const wled_angio_version_span = document.querySelector('#wled_angio_version');
-        wled_angio_version_span.innerHTML = wled_moss_version;
+        wled_angio_version_span.innerHTML = wled_angio_version;
 
         const micropython_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/manifest.json");
         const micropython_version_span = document.querySelector('#micropython_version');
