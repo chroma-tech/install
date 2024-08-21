@@ -92,6 +92,10 @@
       </p>
 
       <p class="button-row" align="center">
+        WLED Angio<span id="wled_angio_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/wled-angio/manifest.json"></esp-web-install-button>
+      </p>
+
+      <p class="button-row" align="center">
         MicroPython <span id="micropython_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/micropython/manifest.json"></esp-web-install-button>
       </p>
 
@@ -139,6 +143,9 @@
         const wled_moss_version_span = document.querySelector('#wled_moss_version');
         wled_moss_version_span.innerHTML = wled_moss_version;
 
+        const wled_angio_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/wled-moss/manifest.json");
+        const wled_angio_version_span = document.querySelector('#wled_angio_version');
+        wled_angio_version_span.innerHTML = wled_moss_version;
 
         const micropython_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/manifest.json");
         const micropython_version_span = document.querySelector('#micropython_version');
