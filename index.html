@@ -96,7 +96,11 @@
       </p>
 
       <p class="button-row" align="center">
-        MicroPython <span id="micropython_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/micropython/manifest.json"></esp-web-install-button>
+        MicroPython <span id="micropython_version"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/micropython/1.22.0/manifest.json"></esp-web-install-button>
+      </p>
+
+      <p class="button-row" align="center">
+        MicroPython <span id="micropython_version23"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/micropython/1.23.0/manifest.json"></esp-web-install-button>
       </p>
 
       <div class="footer">
@@ -147,9 +151,14 @@
         const wled_angio_version_span = document.querySelector('#wled_angio_version');
         wled_angio_version_span.innerHTML = wled_angio_version;
 
-        const micropython_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/manifest.json");
+        const micropython_version = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/1.22.0/manifest.json");
         const micropython_version_span = document.querySelector('#micropython_version');
         micropython_version_span.innerHTML = micropython_version;
+
+        const micropython_version23 = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/1.23.0/manifest.json");
+        const micropython_version23_span = document.querySelector('#micropython_version23');
+        micropython_version_span.innerHTML = micropython_version;
+
       }
       
       (async () => {
