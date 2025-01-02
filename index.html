@@ -103,6 +103,10 @@
         MicroPython <span id="micropython_version23"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/micropython/1.23.0/manifest.json"></esp-web-install-button>
       </p>
 
+      <p class="button-row" align="center">
+        MicroPython <span id="micropython_version23oct"></span>: <esp-web-install-button manifest="https://storage.googleapis.com/chromatech-firmware/micropython/1.23.0-oct/manifest.json"></esp-web-install-button>
+      </p>
+
       <div class="footer">
         Chroma.tech web installer
          &mdash;
@@ -158,6 +162,10 @@
         const micropython_version23 = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/1.23.0/manifest.json");
         const micropython_version23_span = document.querySelector('#micropython_version23');
         micropython_version23_span.innerHTML = micropython_version23;
+
+        const micropython_version23oct = await getVersion("https://storage.googleapis.com/chromatech-firmware/micropython/1.23.0-oct/manifest.json");
+        const micropython_version23oct_span = document.querySelector('#micropython_version23oct');
+        micropython_version23_span.innerHTML = micropython_version23oct;
 
       }
       
